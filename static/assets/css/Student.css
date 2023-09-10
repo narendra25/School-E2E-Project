@@ -1,0 +1,44 @@
+body{
+    background-image: url('../img/5.jpg');
+}
+.required:after {
+    content:" *";
+    color: red;
+  }
+p{
+  color:black;
+  font-size: large;
+}
+label{
+ font-style:oblique;
+ font:bold;
+}
+
+.main {
+ text-align:center;
+ font-family:"Times New Roman";
+}
+.marq {
+ padding-top:20px;
+ padding-bottom:20px;
+}
+.geek1 {
+ font-size:26px;
+ font-weight:bold;
+ color:aqua;
+ padding-bottom:3px;
+}
+input {
+ width: 100%;
+ padding: 12px 20px;
+ margin: 8px 0;
+ box-sizing: border-box;
+ border: 3px solid #ccc;
+ -webkit-transition: 0.5s;
+ transition: 0.5s;
+ outline: none;
+}
+
+input:focus {
+ border: 3px solid #555;
+}

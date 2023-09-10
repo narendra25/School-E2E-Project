@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}
+Contact
+{% endblock title %}
+{% block stylecss %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+{% endblock stylecss %}
+{% block body %}
+
+<div class="container mt-4 p-2" >
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <br><br><br><br>
+      <!-- Sign Up Here -->
+      <h3 class="text-white bg-dark text-center p-3">Contact Us</h3>
+
+      {% for message in messages %}
+      <div class="alert alert-warning alert-{{message.tags}} dismissible fade show" role="alert">
+        <strong>{{message}}</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+
+      <div class="card p-2">
+        <form action="/contact/" method="post">{% csrf_token %}
+
+        <!-- Email -->
+        <div class="form-group">
+          <h5><span><i class="fas fa-user"></i> Name</span></h5>
+        <input type="text" class ="form-control mb-3" placeholder="Name" name="name" required>
+        </div>
+        <!-- Email -->
+        <div class="form-group">
+          <h5><span><i class="bx bx-envelope"></i> Email</span></h5>
+        <input type="email" class ="form-control mb-3" placeholder="Email" name="email" required>
+        </div>
+        <!-- Email -->
+        <div class="form-group">
+          <h5><span><i class="fas fa-phone-alt" ></i> Phone Number</span></h5>
+        <input type="number" class ="form-control mb-3" placeholder="PhoneNumber" name="num" required>
+        </div>
+
+
+
+        <!-- Password -->
+        <div class="form-group">
+          <h5><span><i class="fas fa-text"></i> Description</span></h5>
+          <textarea type="text" class ="form-control mb-3" placeholder="Description" name="Description"></textarea>
+        </div>
+        <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-dark">Submit</button>
+      </div>
+  </div>
+  
+  </form>
+    <div class="col-md-4"> </div>
+</div>
+
+{% endblock body %}
