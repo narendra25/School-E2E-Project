@@ -7,14 +7,18 @@ Contact
 
 {% endblock stylecss %}
 {% block body %}
-
-<div class="container mt-4 p-2" >
+<div class = "main">
+  <marquee class="marq bg-dark"  direction = "right" loop="" Scrollamount=12>
+      <div class="geek1">Welcome to Divya'S International School</div>
+  </marquee>
+  </div>
+<div class="container" >
   <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
       <br><br><br><br>
       <!-- Sign Up Here -->
-      <h3 class="text-white bg-dark text-center p-3">Contact Us</h3>
+      <h3 class="text-white bg-dark text-center p-2">Contact Us</h3>
 
       {% for message in messages %}
       <div class="alert alert-warning alert-{{message.tags}} dismissible fade show" role="alert">
