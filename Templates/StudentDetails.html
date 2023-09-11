@@ -23,7 +23,7 @@ Student Details
           </h2>
           <br />
           
-          <form action="/StudentDetailsInsert/" method="POST">
+          <form action="/StudentDetailsInsert/" method="post">
             {% csrf_token %}
             <div class="form-group">
               <label class="text-Black mt-2 required"
@@ -102,36 +102,25 @@ Student Details
             </div>
             <br>
             <div class="d-grid gap-2">
-              <button class="btn btn-success" type="save">Save</button>
+              <button class="btn btn-success" type="submit">Save</button>
             </div>
           </form>
           
         </div>
         <div class="col-md-8">
-          {% for message in messages %}
-  <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-  <strong>{{message}}</strong> 
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-{% endfor %}
-
           <h2 class="text-center text-white bg-dark p-3">
             Student  Details
           </h2>
-          
-          <form class="form-inline my-2 my-lg-0">
-            <input
-              class="form-control mr-sm-2"
-              name="q"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button
-              class="btn btn-outline-success my-1 my-sm-0 btn btn-info"
-              type="submit"
-            >Search</button>
-          </form>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-1 my-sm-0 btn btn-info" type="submit" >Search</button>
+        </form>
+          {% for message in messages %}
+          <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+          <strong>{{message}}</strong> 
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
           {% comment %}
           {% for message in messages %}
           <div

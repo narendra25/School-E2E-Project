@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from SchoolApp.models import *
+from SchoolApp.models import Student,StudentFamily
 from django.http import HttpResponse
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -118,25 +118,18 @@ def Family(request):
     try:
         if 'q' in request.GET:
             q = request.GET['q']
-        #data = Data.objects.filter(last_name__icontains=q)
+        # data = Data.objects.filter(last_name__icontains=q)
         multiple_q = Q(Q(name__icontains=q) | Q(father_name__icontains=q))
         family = StudentFamily.objects.filter(multiple_q) 
         if not family:
-           messages.warning(request,"No data found")
+            messages.warning(request,"No data found")
         else:
             pass
     except:
         pass
-
         family=StudentFamily.objects.all()
-        SF=Student.objects.all()
-        #page1=Paginator(family,10)
-        #page_list1=request.GET.get('page1')
-        #page1=page1.get_page(page_list1)
-        #context={'page1':page1,'SF':SF}
-        context={'SF':SF,'family':family}
-       
-        return render(request,'StudentDetails.html',context)
+    context={'family':family}
+    return render(request,'StudentDetails.html',context)
 
 def familyinsertedData(request):
     SF=Student.objects.all()
@@ -202,9 +195,9 @@ def StudentDetailsDelete(request,id):
 
 
 def pdf(request):
-    d=Student.objects.all()
+    data=Student.objects.all()
     template_path ='StudentsAdd.html'
-    context = {'d': d}
+    context = {'data': data}
     # Create a Django response object, and specify content_type as pdf
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="Student.pdf"'
