@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>welcome</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-white"> 
+        <table class="table table-bordered">
+          
+  <thead>
+    <tr class="table-active">
+      <th scope="col">Id</th>
+      <th scope="col">RollNumber</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Age</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for d in page.object_list %}
+    <tr>
+      <th scope="row">{{d.id}}</th>
+      <td>{{d.rollnumber}}</td>
+      <td>{{d.name}}</td>
+      <td>{{d.email}}</td>
+      <td>{{d.age}}</td>
+      <td>{{d.gender}}</td>
+      <td><a type="button" href="/StudentUpdate/{{d.id}}" class="btn btn-primary btn btn-outline-warning">Edit</a></td>
+      <td><a type="button" href="/StudentDelete/{{d.id}}" class="btn btn-danger btn btn-outline-warning">Delete</a></td>
+      
+    </tr>
+{% endfor %}
+
+  </tbody>
+
+</table>
+</nav>
+</body>
+</html>

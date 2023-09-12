@@ -1,5 +1,6 @@
 from django.urls import path
 from SchoolApp import views
+
 urlpatterns = [
     #path('admin/', admin.site.urls),
     path('home/',views.home,name="home"),
@@ -13,6 +14,6 @@ urlpatterns = [
     path('StudentDetailsInsert/',views.familyinsertedData,name="StudentDetailsInsert"),
     path('StudentDetailsEdit/<id>',views.StudentDetailsUpdate,name="StudentDetailsEdit"),
     path('StudentDetailsDelete/<id>',views.StudentDetailsDelete,name="StudentDetailsDelete"),
-    path('pdf/',views.pdf)
-
+    path('pdf/',views.pdf),
+    
 ]

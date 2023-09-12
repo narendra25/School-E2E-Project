@@ -10,6 +10,7 @@ def Login_View(request):
     if request.method=="POST":
         UserName=request.POST.get("username")
         Password=request.POST.get("password")
+       
         myuser=authenticate(username=UserName,password=Password)
         if myuser is not None:
             login(request,myuser)

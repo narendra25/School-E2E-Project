@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     #Here We add the the App Names
     'AuthenticationApp',
     'SchoolApp',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

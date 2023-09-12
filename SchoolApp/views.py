@@ -1,13 +1,14 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from SchoolApp.models import Student,StudentFamily
+from SchoolApp.models import Student,StudentFamily,Contacts
 from django.http import HttpResponse
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.db.models import Q
-
 from django.template.loader import get_template
 from xhtml2pdf import pisa
+import datetime
+
 # Create your views here.
 def home(request):
     return render(request,'Home.html')
@@ -115,19 +116,19 @@ def StudentEdit(request):
 
 ##Student Family Details
 def Family(request):
+
+    family=StudentFamily.objects.all()
     try:
-        if 'q' in request.GET:
-            q = request.GET['q']
-        # data = Data.objects.filter(last_name__icontains=q)
-        multiple_q = Q(Q(name__icontains=q) | Q(father_name__icontains=q))
-        family = StudentFamily.objects.filter(multiple_q) 
+        if request.method=="GET":
+            st=request.GET.get('q')
+        if st!=None:
+            multiple_q = Q(Q(father_name__icontains=st))
+            #family=StudentFamily.objects.filter(father_name__icontains=st)
+            family=StudentFamily.objects.filter(multiple_q)
         if not family:
             messages.warning(request,"No data found")
-        else:
-            pass
     except:
         pass
-        family=StudentFamily.objects.all()
     context={'family':family}
     return render(request,'StudentDetails.html',context)
 
@@ -196,7 +197,7 @@ def StudentDetailsDelete(request,id):
 
 def pdf(request):
     data=Student.objects.all()
-    template_path ='StudentsAdd.html'
+    template_path ='pdf1.html'
     context = {'data': data}
     # Create a Django response object, and specify content_type as pdf
     response = HttpResponse(content_type='application/pdf')
@@ -212,3 +213,6 @@ def pdf(request):
     if pisa_status.err:
        return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
+
+def captcha(request):
+    return render(request,'captcha.html')

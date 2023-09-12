@@ -1,9 +1,16 @@
 from django.contrib import admin
 
-from .models import *
+from .models import Student,StudentFamily,Contacts
 
 # Register your models here.
-
-admin.site.register(Student)
-admin.site.register(StudentFamily)
+class MemberAdmin(admin.ModelAdmin):
+  list_display = ("rollnumber","name", "email", "age","gender",)
+admin.site.register(Student,MemberAdmin)
+class StudentDetailsAdmin(admin.ModelAdmin):
+  list_display = ("name","father_name","mother_name","emergency")
+ 
+admin.site.register(StudentFamily,StudentDetailsAdmin)
 admin.site.register(Contacts)
+
+
+  
