@@ -3,9 +3,13 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login
 from AuthenticationApp.models import *
+from django.views.decorators.cache import cache_control
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 #Login vIew Functionality 
 #Login Validations
+
+@cache_control(no_cache=True, must_revalidate=True,no_store=True)
 def Login_View(request):
     if request.method=="POST":
         UserName=request.POST.get("username")
@@ -52,5 +56,7 @@ def SignUp_View(request):
         messages.success(request,'Suceessfully completed your registration..Please Login!')
         return redirect('/')
     return render(request,'SignUp.html')
+@cache_control(no_cache=True, must_revalidate=True,no_store=True)
+
 def LogOut(request):
     return render(request,'Login.html')
