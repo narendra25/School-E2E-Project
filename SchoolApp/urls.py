@@ -1,5 +1,6 @@
 from django.urls import path
 from SchoolApp import views
+from SchoolApp import pdf
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
@@ -14,6 +15,7 @@ urlpatterns = [
     path('StudentDetailsInsert/',views.familyinsertedData,name="StudentDetailsInsert"),
     path('StudentDetailsEdit/<id>',views.StudentDetailsUpdate,name="StudentDetailsEdit"),
     path('StudentDetailsDelete/<id>',views.StudentDetailsDelete,name="StudentDetailsDelete"),
-    path('pdf/',views.pdf),
-    
+    path('StudentDetailPdf/',views.ResultList,name="StudentDetailsPdf"),
+    path('UploadStudents/',views.simple_upload,name="UploadStudents"),
+    path('export/', views.export),
 ]

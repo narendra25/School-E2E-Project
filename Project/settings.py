@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'AuthenticationApp',
     'SchoolApp',
     'rest_framework',
+    'import_export',
 ]
 
 MIDDLEWARE = [

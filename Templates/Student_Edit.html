@@ -32,7 +32,7 @@ Update Student Details
           {% endfor %}
           <form action="/StudentUpdate/{{d.id}}" method="post"> {% csrf_token %}
             <div class="form-group">
-              <label class="text-Black  required">Enter Student Roll Number:</label>
+              <label class="text-Black  required"></i>Enter Student Roll Number:</label>
               <input
                 type="text"
                 class="form-control"
@@ -50,7 +50,8 @@ Update Student Details
                 placeholder="Enter the Student Name"
                 name="name"
                 value={{d.name}}
-                required
+      
+                readonly
               />
             </div>
 
@@ -89,7 +90,7 @@ Update Student Details
             <br />
 
             <div class="d-grid gap-2">
-              <button class="btn btn-sucess btn btn-outline-primary" type="submit">Update</button>
+              <button class="btn btn-sucess btn btn-outline-primary" type="submit"> <i class="bi bi-arrow-up-circle-fill"></i>Update</button>
             </div>
           </form>
         </div>

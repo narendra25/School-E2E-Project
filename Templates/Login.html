@@ -22,7 +22,7 @@
   </head>
   <body>
     <div class = "main">
-      <marquee class="marq bg-dark"  direction = "right" loop="" Scrollamount=12>
+      <marquee class="marq bg-Black"  direction = "right" loop="" Scrollamount=12>
           <div class="geek1">Welcome to Divya'S International School</div>
           <div class="geek2">No.1 Educational Instution</div>
           
@@ -42,7 +42,7 @@
        
       
         <div class="col-md-4">
-          <h2 class="text-Black text-center">Login</h2>
+          <h2 class="text-white text-center">Login<b></h2>
           {% for message in messages %}
           <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
             <strong>{{ message }}</strong> 
@@ -86,8 +86,8 @@
               <button onclick="validcap()" class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
             </div>
           </form>
-          <h6>Captcha not visible <img src="{% static "assets/img/refresh.jpg" %}" width="40px" onclick="cap()"></h6>
-          <h6>New Here?<a href="/signup">Sign Up</a> </h6>
+          <label class="text-white"><h6>Captcha not visible <img src="{% static "assets/img/refresh.jpg" %}" width="40px" onclick="cap()"></h6></label>
+          <label class="text-white"><h5>New Here?<a href="/signup">Sign Up</a> </h5></label>
         </div>
       </div>
       </div>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentDetailsPdf</title>
+</head>
+<body>
+    <div></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-md text-center">
+          <h1>
+            <a class="navbar-brand" href="https://divyainternationalschool.in/" >Divya'S International School</a>
+          </h1>
+        </div>
+      </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-white">
+        <table class="table table-hover">
+          <thead>
+            <tr class="table-info">
+            <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Father Name</th>
+              <th scope="col">Mother Name</th>
+              <th scope="col">Emergency Number</th>
+              <th scope="col">Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for category in family %}
+            <tr>
+                <td>{{category.id}}</td>
+              <td>{{category.name}}</td>
+              <td>{{category.father_name}}</td>
+              <td>{{category.mother_name}}</td>
+              <td>{{category.emergency}}</td>
+              <td>{{category.address}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </nav>
+</body>
+</html>

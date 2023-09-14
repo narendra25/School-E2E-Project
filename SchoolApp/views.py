@@ -8,6 +8,9 @@ from django.db.models import Q
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 import datetime
+from django.http import HttpResponse
+from SchoolApp.resources import StudentFamilyesource
+from tablib import Dataset
 
 # Create your views here.
 def home(request):
@@ -195,24 +198,49 @@ def StudentDetailsDelete(request,id):
     return redirect("/StudentDetails")
 
 
-def pdf(request):
-    data=Student.objects.all()
-    template_path ='pdf1.html'
-    context = {'data': data}
-    # Create a Django response object, and specify content_type as pdf
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="Student.pdf"'
-    # find the template and render it.
-    template = get_template(template_path)
-    html = template.render(context)
-
-    # create a pdf
-    pisa_status = pisa.CreatePDF(
-       html, dest=response) 
-    # if error then show some funny view
-    if pisa_status.err:
-       return HttpResponse('We had some errors <pre>' + html + '</pre>')
-    return response
-
 def captcha(request):
     return render(request,'captcha.html')
+
+from SchoolApp.pdf import render_to_pdf
+
+
+def ResultList(request):
+    template_name = "StudentDetailsPdf.html"
+    family = StudentFamily.objects.all().order_by("id")
+
+    return render_to_pdf(
+        template_name,
+        {
+            "family": family,
+        },
+    )
+
+
+def export(request):
+    person_resource = StudentFamilyesource()
+    dataset = person_resource.export()
+    response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="persons.xls"'
+    return response
+def simple_upload(request):
+    if request.method == 'POST':
+        person_resource = StudentFamilyesource()
+        dataset = Dataset()
+        new_persons = request.FILES['myfile']
+        if not new_persons.name.endswith('xlsx'):
+            messages.info(request,'Wrong Format')
+            return render(request,'StudentsUpload.html')
+
+        imported_data = dataset.load(new_persons.read(),format='xlsx')
+        print(imported_data)
+        for data in imported_data:
+            value = Student(
+        		data[0],
+        		data[1],
+        		data[2],
+        		data[3],
+                data[4],
+                data[5]
+        		)
+            value.save()   
+    return render(request, 'StudentsUpload.html')

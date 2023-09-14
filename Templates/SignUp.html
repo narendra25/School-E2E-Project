@@ -22,7 +22,7 @@
   </head>
   <body>
     <div class = "main">
-      <marquee class="marq bg-dark"  direction = "right" loop="" Scrollamount=12>
+      <marquee class="marq bg-Black"  direction = "right" loop="" Scrollamount=12>
           <div class="geek1">Welcome to Divya'S International School</div>
           <div class="geek2">No.1 Educational Instution</div>
           
@@ -51,7 +51,7 @@
           </div>
           {% endfor %}
           <form action="/signup/" method="post"> {% csrf_token %}
-            <label class="text-Black"><h6>UserName</h6></label>
+            <label class="text-white"><h6>UserName</h6></label>
             <div class="form-group">
               <input
                 type="text"
@@ -61,7 +61,7 @@
                 required
               />
             </div>
-            <label class="text-Black"><h6>Email</h6></label>
+            <label class="text-white"><h6>Email</h6></label>
             <div class="form-group">
               <input 
               type="email" 
@@ -71,7 +71,7 @@
               required 
               />
             </div>
-            <label class="text-Black"><h6>Password<h6></label>
+            <label class="text-white"><h6>Password<h6></label>
             <div class="form-group">
               <input
                 type="password"
@@ -105,7 +105,7 @@
               </div>
             </form>
             <h6>Captcha not visible <img src="{% static "assets/img/refresh.jpg" %}" width="40px" onclick="cap()"></h6>
-            <h6>Click Here to Login<a href="/">Login In</a> </h6>
+            <h6>Click Here to<a href="/">Login In</a> </h6>
           </div>
         </div>
         </div>
