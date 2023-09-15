@@ -133,7 +133,7 @@ Add Student
       <td>{{d.age}}</td>
       <td>{{d.gender}}</td>
       <td><a type="button" href="/StudentUpdate/{{d.id}}" class="btn btn-primary btn btn-outline-warning"><i class="bi bi-pencil-fill"></i>Edit</a></td>
-      <td><a type="button" href="/StudentDelete/{{d.id}}" class="btn btn-danger btn btn-outline-warning"><i class="bi bi-trash"></i>Delete</a></td>
+      <td><a type="button" href="/StudentDelete/{{d.id}}" class="btn btn-danger btn btn-outline-warning" ><i class="bi bi-trash"></i>Delete</a></td>
       
     </tr>
 {% endfor %}
@@ -145,9 +145,11 @@ Add Student
 <a href="/home" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini btn btn-primary"
          style="float:right"><i class="bi bi-back"></i>Back Home</a> 
 <a class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini btn btn-success"
-style="float:right" href="#"><i class="bi bi-file-earmark-minus-fill"></i>GeneratePDF</a>
+style="float:right" href="/StudentPdf" target="_blank"><i class="bi bi-file-earmark-minus-fill"></i>GeneratePDF</a>
+<a class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini btn btn-dark"
+style="float:right" href="/UploadStudents"><i class="bi bi-file-earmark-arrow-up-fill"></i>Import Students</a>
 <a class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini btn btn-info"
-style="float:right" href="/UploadStudents"><i class="bi bi-upload"></i>Export Students</a>
+style="float:right" href="/StudentExport" target="_blank"><i class="bi bi-file-earmark-arrow-down-fill"></i> </i>ExportStudents</a>
 <div class="container">
   <div class="row my-5">
     <div class="col-md-4">

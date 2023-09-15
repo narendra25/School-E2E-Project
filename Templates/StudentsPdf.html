@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentsPdf</title>
+</head>
+<body>
+    <div></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-md text-center">
+          <h1>
+            <a class="navbar-brand" href="https://divyainternationalschool.in/" >Divya'S International School</a>
+          </h1>
+        </div>
+      </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-white">
+        <table class="table table-hover">
+            <thead>
+                <th>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</th>
+                <tr class="table-active">
+                  <th scope="col"><b>Id</th>
+                  <th scope="col"><b>RollNumber</th>
+                  <th scope="col"><b>Name</th>
+                  <th scope="col"><b>Email</th>
+                  <th scope="col"><b>Age</th>
+                  <th scope="col"><b>Gender</th>
+                </tr>
+                <th>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</th>
+              </thead>
+          <tbody>
+             {% for d in family %}
+            <tr>
+              <th scope="row">{{d.id}}</th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{d.rollnumber}}</td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{d.name}}</td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{d.email}}</td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{d.age}}</td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{d.gender}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </nav>
+</body>
+</html>

@@ -18,24 +18,28 @@
         <table class="table table-hover">
           <thead>
             <tr class="table-info">
-            <th scope="col">Id</th>
-              <th scope="col">Name</th>
-              <th scope="col">Father Name</th>
-              <th scope="col">Mother Name</th>
-              <th scope="col">Emergency Number</th>
-              <th scope="col">Address</th>
+            <th scope="col"><b>Id</th>
+              <th scope="col"><b>Name</th>
+              <th scope="col"><b>Father Name</th>
+              <th scope="col"><b>Mother Name</th>
+              <th scope="col"><b>Emergency Number</th>
+              <th scope="col"><b>Address</th>
             </tr>
           </thead>
           <tbody>
             {% for category in family %}
+            <th>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</th>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <tr>
-                <td>{{category.id}}</td>
-              <td>{{category.name}}</td>
-              <td>{{category.father_name}}</td>
-              <td>{{category.mother_name}}</td>
-              <td>{{category.emergency}}</td>
-              <td>{{category.address}}</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{category.id}}</td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{category.name}}</td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{category.father_name}}</td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{category.mother_name}}</td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{category.emergency}}</td>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{category.address}}</td>
+              
             </tr>
+            <th>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</th>
             {% endfor %}
           </tbody>
         </table>

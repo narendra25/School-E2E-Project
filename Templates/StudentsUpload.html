@@ -1,15 +1,16 @@
-
 {% extends 'base.html' %}
 {% load  static %}
 {% block title %}
 Upload Students
 {% endblock title %}
 {% block stylecss %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+ crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="{% static "assets/css/login.css" %}" rel="stylesheet">
 {% endblock stylecss %}
 {% block body %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark ">
     <div class="container-md text-center">
       <h1>
         <a class="navbar-brand" href="https://divyainternationalschool.in/" >Divya'S International School</a>
@@ -32,9 +33,9 @@ Upload Students
       </div>
       {% endfor %}
       {% endcomment %}
-      <h6>1.Please Upload only Excel(.xlsx)with proper data.<h6>
-      <h6>2.Please Don't Upload only Duplicate data of email and username .<h6>
-      <h6>If You want to sample data form?<a class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini btn btn-dark" href="{% static "/assests/img/Student.xlsx" %}" download>click here</a></h6>
+      <label class="text-white"><h6><b>1.Please Upload only Excel(.xlsx)with proper data.<h6></label>
+        <h6><b>2.Please Don't Upload only Duplicate data of email and username .<h6>
+          <h6><b>If You want to sample data form?<a class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini btn btn-dark" href="/StudentExcelDownload/">click here</a></h6>
 
 <form method="post" enctype="multipart/form-data">
  
