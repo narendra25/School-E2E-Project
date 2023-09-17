@@ -118,11 +118,13 @@ def update(request, id):
     return render(request, 'Student_Edit.html', context)
 
 
-def delete(request, id):
-    d = Student.objects.get(id=id)
-    d.delete()
-    messages.success(request, "Student Details Successfully deleted..")
-    return redirect("/StudentAdd")
+def delete(request,pk):
+    d = Student.objects.get(id=pk)
+    if request.method == 'POST':
+        d.delete()
+        messages.success(request, "Student Details Successfully deleted..")
+        return redirect("/StudentAdd")
+    return render(request, 'delete_invoice.html')
 
 
 def StudentEdit(request):
@@ -251,5 +253,4 @@ def StudentResultList(request):
             "family": family,
         },
     )
-def logout(request):
-    return render(request,'logout.html')
+

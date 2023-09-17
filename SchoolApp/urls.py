@@ -9,7 +9,7 @@ urlpatterns = [
     path('StudentInsert/',views.insertedData,name="StudentInsert"),
     path('StudentUpdate/<id>',views.update,name="StudentUpdate"),
     path('StudentEdit/',views.StudentEdit,name="studentedit"),
-    path('StudentDelete/<id>',views.delete,name="StudentDelete"),
+    path('StudentDelete/<str:pk>/',views.delete,name="StudentDelete"),
     path('StudentDetails/',views.Family,name="StudentDetails"),
     path('StudentDetailsInsert/',views.familyinsertedData,name="StudentDetailsInsert"),
     path('StudentDetailsEdit/<id>',views.StudentDetailsUpdate,name="StudentDetailsEdit"),
@@ -20,6 +20,7 @@ urlpatterns = [
     path('StudentExport/',excel.Student_Export_Data_To_Excel,name="StudentExport"),
     path('StudentFamilyExport/',excel.StudentFamily_Export_Data_To_Excel,name="StudentFamiltExportdata"),
     path('StudentPdf/',views.StudentResultList,name="StudentsPdf"),
+    
    
 
 ]

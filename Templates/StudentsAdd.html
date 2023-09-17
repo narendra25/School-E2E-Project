@@ -8,6 +8,7 @@ Add Student
 <link href="{% static "assets/css/login.css" %}" rel="stylesheet">
 {% endblock stylecss %}
 {% block body %}
+
     <nav class="navbar navbar-expand-lg navbar-dark "> 
       <div class="container-md text-center">
         <h1><a class="navbar-brand" href="https://divyainternationalschool.in/" >Divya'S International School</a></h1>
@@ -133,8 +134,7 @@ Add Student
       <td>{{d.age}}</td>
       <td>{{d.gender}}</td>
       <td><a type="button" href="/StudentUpdate/{{d.id}}" class="btn btn-primary btn btn-outline-warning"><i class="bi bi-pencil-fill"></i>Edit</a></td>
-      <td><a type="button" href="/StudentDelete/{{d.id}}" class="btn btn-danger btn btn-outline-warning" ><i class="bi bi-trash"></i>Delete</a></td>
-      
+      <td><a type="button"  href="/StudentDelete/{{d.id}}" class="btn btn-danger btn btn-outline-warning" ><i class="bi bi-trash"></i>Delete</a></td>
     </tr>
 {% endfor %}
 
