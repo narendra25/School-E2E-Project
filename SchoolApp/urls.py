@@ -20,7 +20,10 @@ urlpatterns = [
     path('StudentExport/',excel.Student_Export_Data_To_Excel,name="StudentExport"),
     path('StudentFamilyExport/',excel.StudentFamily_Export_Data_To_Excel,name="StudentFamiltExportdata"),
     path('StudentPdf/',views.StudentResultList,name="StudentsPdf"),
+    path('StudentDataPdf/',views.StudentDtaPdf,name="StudentDataPdf"),
+    path('StudentDetailsDataPdf/',views.StudentDetailsDataPdf,name="StudentDetailsDataPdf"),
     
+
    
 
 ]

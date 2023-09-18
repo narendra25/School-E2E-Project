@@ -1,0 +1,142 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block title %}
+    Student Details Data Pdf
+ {% endblock title %}
+{% block stylecss %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="{% static "assets/css/login.css" %}" rel="stylesheet">
+{% endblock stylecss %}
+{% block body %}
+
+  <div id="pt">
+      <div class="container mt-5">
+          <div><h2>School Details Data:</h2></div><br>
+                <table class="table" width="100%" border="0" cellspacing="0" cellpadding="0">    
+                    <tr>
+                        <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center">
+                            <b>School Name:</b> 
+                        </td>
+                        <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center">
+                            <h6> <b>Divya'sInternationSchool</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center">
+                            <b>Email:</b> 
+                        </td>
+                        <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center">
+                            <h6> <b>Divya'sInternationSchool@gmail.com</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center">
+                            <b> Contact:</b>
+                        </td>
+                        <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center">
+                            <h6> <b>9848330345</b></h6>
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center">
+                            <b>Address:</b> 
+                        </td>
+                        <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center">
+                            <h6> <b>2nd Street,Gachibowli,Hyderabad-500003</b></h6>
+                        </td>
+                    </tr>
+                </table>
+{% comment%}
+                <div><h2>Buyer</h2></div>
+
+                <table class="table" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:400; font-size:14px;">
+                        <b>Name</b> 
+                    </td>
+                    <td>
+                        {{data.bname}}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:400; font-size:14px;">
+                        <b>Address </b> 
+                    </td>
+                    <td>
+                        {{data.baddress}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Phone</b>
+                    </td>
+                    <td>
+                        {{data.bphone}}
+                    </td>
+                </tr>   
+{% endcomment %}
+<div><h2>Student Details Data PDF:</h2></div><br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                    <col span="5" style="background-color: #D6EEEE">
+                  </colgroup>
+                <thead>
+                <tr>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center">NAME</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center">FATHER NAME</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center">MOTHER NAME</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center">EMERGENCY CONTACT</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        width="30%" align="center">ADDRESS</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in SFD %}
+                <tr>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-left:1px solid #333; border-right:1px solid #333;"
+                        height="32" align="center">{{s.name}}</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        align="center">{{s.father_name}}</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        align="center">{{s.mother_name}}</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        align="center">{{s.emergency}}</td>
+                    <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333;"
+                        align="center">{{s.address}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+
+        </td>
+    </tr>
+    
+
+    <button onclick="myfun('pt')" class="btn btn-primary mt-3">Genarate Students Details PDF</button>
+</div>
+
+</div>
+
+<script type="text/javascript">
+    function myfun(pa){
+    var bk = document.body.innerHTML;
+    var dv = document.getElementById(pa).innerHTML;
+        document.body.innerHTML = dv;
+        window.print();
+    }
+
+</script>
+
+{% endblock %}

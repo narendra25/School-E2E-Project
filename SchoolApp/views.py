@@ -254,3 +254,10 @@ def StudentResultList(request):
         },
     )
 
+def StudentDtaPdf(request):
+    slr = Student.objects.all()
+    return render(request,'StudentDataPdf.html',{'seller':slr})
+
+def StudentDetailsDataPdf(request):
+    SFD = StudentFamily.objects.all()
+    return render(request,'StudentDetailsDataPdf.html',{'SFD':SFD})
