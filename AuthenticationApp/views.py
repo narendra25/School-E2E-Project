@@ -59,4 +59,4 @@ def SignUp_View(request):
 @cache_control(no_cache=True, must_revalidate=True,no_store=True)
 
 def LogOut(request):
-    return render(request,'Logout.html')
+    return render(request,'Base.html')
