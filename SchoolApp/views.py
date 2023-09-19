@@ -58,7 +58,7 @@ def index(request):
     page_list = request.GET.get('page')
     page = page.get_page(page_list)
     context = {'page': page}
-    return render(request, 'StudentsAdd.html', context)
+    return render(request, 'StudentDataModalView.html', context)
 
 
 def insertedData(request):
@@ -92,7 +92,7 @@ def insertedData(request):
     messages.success(request, 'Student Details Added Successfully')
     query.save()
     return redirect("/StudentAdd")
-    return render(request, 'StudentsAdd.html')
+    return render(request, 'StudentDataModalView.html')
 
 
 def update(request, id):
@@ -124,7 +124,8 @@ def delete(request,pk):
         d.delete()
         messages.success(request, "Student Details Successfully deleted..")
         return redirect("/StudentAdd")
-    return render(request, 'delete_invoice.html')
+    context={'d':d}
+    return render(request, 'delete.html', context)
 
 
 def StudentEdit(request):
@@ -261,3 +262,13 @@ def StudentDtaPdf(request):
 def StudentDetailsDataPdf(request):
     SFD = StudentFamily.objects.all()
     return render(request,'StudentDetailsDataPdf.html',{'SFD':SFD})
+
+
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.urls import reverse
+def view_student(request, id):
+  return HttpResponseRedirect(reverse('index'))
+
+def view_studentdetails(request, id):
+  return HttpResponseRedirect(reverse('Family'))

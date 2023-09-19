@@ -14,14 +14,16 @@ urlpatterns = [
     path('StudentDetailsInsert/',views.familyinsertedData,name="StudentDetailsInsert"),
     path('StudentDetailsEdit/<id>',views.StudentDetailsUpdate,name="StudentDetailsEdit"),
     path('StudentDetailsDelete/<id>',views.StudentDetailsDelete,name="StudentDetailsDelete"),
-    path('StudentDetailPdf/',views.StudentDetailsResultList,name="StudentDetailsPdf"),
+    #path('StudentDetailPdf/',views.StudentDetailsResultList,name="StudentDetailsPdf"),
     path('UploadStudents/',excel.Student_upload,name="UploadStudents"),
     path('StudentExcelDownload/', excel.Student_Download_File,name="StudentExcelDownload"),
     path('StudentExport/',excel.Student_Export_Data_To_Excel,name="StudentExport"),
     path('StudentFamilyExport/',excel.StudentFamily_Export_Data_To_Excel,name="StudentFamiltExportdata"),
-    path('StudentPdf/',views.StudentResultList,name="StudentsPdf"),
+   # path('StudentPdf/',views.StudentResultList,name="StudentsPdf"),
     path('StudentDataPdf/',views.StudentDtaPdf,name="StudentDataPdf"),
     path('StudentDetailsDataPdf/',views.StudentDetailsDataPdf,name="StudentDetailsDataPdf"),
+    path('<int:id>', views.view_student, name='view_student'),
+    path('<int:id>', views.view_studentdetails, name='view_studentdetails'),
     
 
    

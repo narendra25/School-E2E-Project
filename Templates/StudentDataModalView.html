@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Add Student
+{% endblock title %}
+{% block stylecss %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="{% static "assets/css/login.css" %}" rel="stylesheet">
+{% endblock stylecss %}
+{% block body %}
+
+    <nav class="navbar navbar-expand-lg navbar-dark "> 
+      <div class="container-md text-center">
+        <h1><a class="navbar-brand" href="https://divyainternationalschool.in/" >Divya'S International School</a></h1>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-4">
+          <h2 class="text-white bg-dark text-center p-3"><i class="bi bi-person-plus"></i>
+            Add Student 
+          </h2>
+          <br />
+{% comment %}
+          {% for message in messages %}
+          <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <strong>{{ message }}</strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endfor %}
+{% endcomment %}
+          <form action="/StudentInsert/" method="post"> {% csrf_token %}
+
+            <div class="form-group">
+              <label class="text-white  required"><i class="bi bi-sort-numeric-up"></i>Enter Student Roll Number:</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter the Student Roll Number"
+                name="roll"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="text-white  required"><i class="bi bi-person-circle"></i>Enter Student Name:</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter the Student Name"
+                name="name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="text-white mt-2 required"><i class="bi bi-envelope-paper-fill"></i>Enter Student Mail:</label>
+              <input
+                type="email"
+                class="form-control mt-2"
+                placeholder="Enter the Student Email"
+                name="email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="text-white mt-2 required"><i class="bi bi-sort-numeric-up"></i>Enter Student Age</label>
+              <input
+                type="number"
+                class="form-control mt-2"
+                placeholder="Enter the Student Age"
+                name="age"
+                min="10" 
+                max="15"
+                required
+              />
+
+              <div class="form-group">
+                <label class="text-white mt-2 required"><i class="bi bi-gender-ambiguous"></i>Enter Student Gender:</label>
+                <select type="button" class="form-control dropdown-toggle" name="gender" id="dropdownMenuOffset"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                  <option selected>Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="others">Others</option>
+                </select>
+              </div>
+            </div>
+            <br />
+
+            <div class="d-grid gap-2">
+              <button class="btn btn-success" type="submit"><i class="bi bi-database-fill-up"></i>Submit</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-8">
+        <h2 class="text-center text-white bg-dark p-3"><i class="bi bi-person-plus"></i>Student Details</h2>
+        
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-1 my-sm-0 btn btn-info" type="submit" ><b><i class="bi bi-search"></i>Search</button>
+        </form>
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong>{{message}}</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-white"> 
+        <table class="table table-bordered">
+          
+  <thead>
+    <tr class="table-active">
+      <th scope="col"><b>Id</th>
+      <th scope="col"><b>RollNumber</th>
+      <th scope="col"><b>Name</th>
+      <th scope="col"><b>Email</th>
+      <th scope="col"><b>Age</th>
+      <th scope="col"><b>Gender</th>
+      <th scope="col">Actions</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for d in page.object_list %}
+    <tr>
+      <th scope="row">{{d.id}}</th>
+      <td>{{d.rollnumber}}</td>
+      <td>{{d.name}}</td>
+      <td>{{d.email}}</td>
+      <td>{{d.age}}</td>
+      <td>{{d.gender}}</td>
+      <td>
+        <button type="button" class="btn btn-success me-1" href="{% url 'view_student' d.id %}" data-bs-toggle="modal" data-bs-target="#myModal{{d.id}}">
+            <i class="fa-solid fa-circle-info fa-lg"></i>
+          </button>
+
+          <!-- Modal - View Student -->
+          <div class="modal" id="myModal{{d.id}}" tabindex="-1" aria-labelledby="myModalLabel1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">
+                    Student: {{d.name}}
+                  </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <ul class="list-unstyled">
+                    <li>Student ID: <strong>{{ d.id }}</strong></li>
+                    <li>Student RollNumber: <strong>{{ d.rollnumber}}</strong></li>
+                    <li>Student Name: <strong>{{ d.name }}</strong></li>
+                    <li>Student Email: <strong>{{ d.email }}</strong></li>
+                    <li>Student Age: <strong>{{ d.age }}</strong></li>
+                    <li>Student Gender: <strong>{{ d.gender }}</strong></li>
+                  </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      <a class="btn btn-warning me-1" href="{% url 'StudentUpdate' d.id %}">
+        <i class="fa-solid fa-pen-to-square fa-lg"></i>
+      </a>
+
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#/StudentDelete/{{d.id}}">
+        <i class="fa-solid fa-trash-can fa-lg"></i>
+      </button>
+
+      <!-- Modal - Delete Student -->
+      <div class="modal" id="/StudentDelete/{{d.id}}" tabindex="-1" aria-labelledby="myModalLabel2" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">
+                Student Name: {{ d.name}}
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure you want to delete this student?</p>
+            </div>
+            <div class="modal-footer">
+              <form action="{% url 'StudentDelete' d.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger" value="Delete">
+              </form>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+    </tr>
+{% endfor %}
+
+  </tbody>
+
+</table>
+</nav>
+<a href="/home" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini btn btn-primary"
+         style="float:right"><i class="bi bi-back"></i>Back Home</a> 
+{% comment %}<a class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini btn btn-success"
+style="float:right" href="/StudentPdf" target="_blank"><i class="bi bi-file-earmark-minus-fill"></i>GeneratePDF</a>{% endcomment %}
+<a class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini btn btn-success"
+style="float:right" href="/StudentDataPdf" target="_blank"><i class="bi bi-file-earmark-minus-fill"></i>GeneratePDF</a>
+<a class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini btn btn-dark"
+style="float:right" href="/UploadStudents"><i class="bi bi-file-earmark-arrow-up-fill"></i>Import Students</a>
+<a class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini btn btn-info"
+style="float:right" href="/StudentExport" target="_blank"><i class="bi bi-file-earmark-arrow-down-fill"></i> </i>ExportStudents</a>
+<div class="container">
+  <div class="row my-5">
+    <div class="col-md-4">
+      {% comment %} <p>page:{{page.number}}/{{page.paginator.num_page}}</p>{% endcomment %}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
+</div>
+</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+    {% endblock body %}

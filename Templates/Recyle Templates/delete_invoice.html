@@ -16,6 +16,7 @@ Add Student
 <form method="post" action="">
     {% csrf_token %}
     <h1 class="text-white mt-2 r"><b>Are you sure you want to delete?</h1><br>
+        <h3 class="text-white mt-2 r"><b>You Are Trying to Deleting this Record -- {{d.name}} & {{d.rollnumber}}</h3><br>
     <button class="btn btn-outline-warning my-1 my-sm-0 btn btn-danger" type="submit" value="Yes" >Delete</button>
     <a href="/StudentAdd"><div class="btn btn-outline-danger my-1 my-sm-0 btn btn-success">Cancel</div></a>
 </form>

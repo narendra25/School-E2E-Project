@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Add Student
+{% endblock title %}
+{% block stylecss %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="{% static "assets/css/SignUp.css" %}" rel="stylesheet">
+{% endblock stylecss %}
+{% block body %}
+<div class = "main">
+    <marquee  direction = "right" loop="" Scrollamount=12>
+        <div class="geek1">Welcome to Divya'S International School</div>
+    </marquee>
+
+<form method="post" action="">
+    {% csrf_token %}
+    <h1 class="text-white mt-2 r"><b>Are you sure you want to delete?</h1><br>
+    <a href="/"><div class="btn btn-outline-danger my-1 my-sm-0 btn btn-warning">LogOut</div></a>
+    <a href="/home"><div class="btn btn-outline-danger my-1 my-sm-0 btn btn-success">Cancel</div></a>
+    
+</form>
+</div>
+{% endblock body %}
