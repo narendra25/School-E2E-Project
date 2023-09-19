@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
+
+<!-- Add Title -->
 {% block title %}
 Add Student
 {% endblock title %}
+
+<!-- Add Css Style -->
 {% block stylecss %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link href="{% static "assets/css/login.css" %}" rel="stylesheet">
 {% endblock stylecss %}
+
+<!-- Add Body -->
 {% block body %}
 
     <nav class="navbar navbar-expand-lg navbar-dark "> 
@@ -32,6 +38,8 @@ Add Student
           </div>
           {% endfor %}
 {% endcomment %}
+
+<!-- Add Students Fields -->
           <form action="/StudentInsert/" method="post"> {% csrf_token %}
 
             <div class="form-group">
@@ -89,42 +97,47 @@ Add Student
               </div>
             </div>
             <br />
-
+<!-- Submit Button of Student Data -->
             <div class="d-grid gap-2">
               <button class="btn btn-success" type="submit"><i class="bi bi-database-fill-up"></i>Submit</button>
             </div>
           </form>
+          <!-- Form Is Closed To Here-->
+<!-- Under Grid Student Data Should Display -->
         </div>
         <div class="col-md-8">
         <h2 class="text-center text-white bg-dark p-3"><i class="bi bi-person-plus"></i>Student Details</h2>
-        
+<!-- Add Search Functionality of Grid -->
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-1 my-sm-0 btn btn-info" type="submit" ><b><i class="bi bi-search"></i>Search</button>
         </form>
+<!-- Add Messages in Html Page -->
   {% for message in messages %}
   <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
   <strong>{{message}}</strong> 
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {% endfor %}
+
+<!-- Grid Table headers and table data -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-white"> 
         <table class="table table-bordered">
           
   <thead>
     <tr class="table-active">
-      <th scope="col"><b>Id</th>
-      <th scope="col"><b>RollNumber</th>
-      <th scope="col"><b>Name</th>
-      <th scope="col"><b>Email</th>
-      <th scope="col"><b>Age</th>
-      <th scope="col"><b>Gender</th>
+      <th scope="col">Id</th>
+      <th scope="col">RollNumber</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Age</th>
+      <th scope="col">Gender</th>
       <th scope="col">Actions</th>
       
     </tr>
   </thead>
   <tbody>
-
+<!-- Retrive Data from the database -->
   {% for d in page.object_list %}
     <tr>
       <th scope="row">{{d.id}}</th>
@@ -133,6 +146,8 @@ Add Student
       <td>{{d.email}}</td>
       <td>{{d.age}}</td>
       <td>{{d.gender}}</td>
+
+<!-- View Student Data under actions  -->
       <td>
         <button type="button" class="btn btn-success me-1" href="{% url 'view_student' d.id %}" data-bs-toggle="modal" data-bs-target="#myModal{{d.id}}">
             <i class="fa-solid fa-circle-info fa-lg"></i>
@@ -166,10 +181,11 @@ Add Student
               </div>
             </div>
           </div>
+<!-- Update And Edit Student data button  -->
       <a class="btn btn-warning me-1" href="{% url 'StudentUpdate' d.id %}">
         <i class="fa-solid fa-pen-to-square fa-lg"></i>
       </a>
-
+<!-- Delete Student Data Of Modal Template -->
       <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#/StudentDelete/{{d.id}}">
         <i class="fa-solid fa-trash-can fa-lg"></i>
       </button>
@@ -207,16 +223,26 @@ Add Student
 
 </table>
 </nav>
+<!-- Back Home Button -->
 <a href="/home" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini btn btn-primary"
          style="float:right"><i class="bi bi-back"></i>Back Home</a> 
 {% comment %}<a class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini btn btn-success"
 style="float:right" href="/StudentPdf" target="_blank"><i class="bi bi-file-earmark-minus-fill"></i>GeneratePDF</a>{% endcomment %}
+
+<!-- Generate Pdf Button Of Student Data -->
 <a class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini btn btn-success"
 style="float:right" href="/StudentDataPdf" target="_blank"><i class="bi bi-file-earmark-minus-fill"></i>GeneratePDF</a>
+
+<!-- Import Students  -->
 <a class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini btn btn-dark"
 style="float:right" href="/UploadStudents"><i class="bi bi-file-earmark-arrow-up-fill"></i>Import Students</a>
+
+<!-- Export Students  -->
 <a class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini btn btn-info"
 style="float:right" href="/StudentExport" target="_blank"><i class="bi bi-file-earmark-arrow-down-fill"></i> </i>ExportStudents</a>
+
+
+<!-- Add Pagination  -->
 <div class="container">
   <div class="row my-5">
     <div class="col-md-4">
