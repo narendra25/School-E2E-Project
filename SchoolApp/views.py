@@ -28,15 +28,15 @@ def contact(request):
         fphonenumber = request.POST.get("num")
         fdescription = request.POST.get("Description")
 #Here User What Enter The data Printing 
-        print(fname, femail, fphonenumber, fdescription)
-        messages.info(
-            request, f'The name is {fname},email is {femail},Phonenumber is{fphonenumber}&your query is{fdescription}')
+        #print(fname, femail, fphonenumber, fdescription)
+        #messages.info(
+            #request, f'The name is {fname},email is {femail},Phonenumber is{fphonenumber}&your query is{fdescription}')
 
 #Here We are Saving The data What user enter in the html.page
         query = Contacts(name=fname, email=femail,
                          phonenumber=fphonenumber, description=fdescription)
         query.save()
-        messages.success(request, "Thanks For Contating us")
+        messages.info(request, "Thanks For Contating us")
     return render(request, 'Contact.html')
 
 #Add student View 

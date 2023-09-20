@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
 # Create your models here.
+#Contatct Page Model
 class Contacts(models.Model):
     name=models.CharField(max_length = 150)
     email=models.EmailField()
@@ -12,7 +13,7 @@ class Contacts(models.Model):
     def __str__(self):
         return self.name
     
-
+#Student Modal 
 class Student(models.Model):
     rollnumber=models.IntegerField(unique=True)
     name=models.CharField(max_length=25,blank=False,null=False,unique=True)
@@ -21,6 +22,8 @@ class Student(models.Model):
     gender=models.CharField(max_length=25,blank=False,null=False)
     def __str__(self):
         return self.name
+    
+#Student Family
 class StudentFamily(models.Model):
     name=models.ForeignKey(Student,on_delete=models.CASCADE)
     #rollnumber=models.ForeignKey(Student,on_delete=models.CASCADE,related_name='topic_content_type',default=None)
