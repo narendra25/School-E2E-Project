@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 #Login vIew Functionality 
 #Login Validations
+#Get Data From The Login.html
 
 @cache_control(no_cache=True, must_revalidate=True,no_store=True)
 def Login_View(request):
@@ -28,6 +29,7 @@ def Login_View(request):
 
 #SignUp View  vIew Functionality 
 #Sign Up Validations
+#Get Data from the Signup.html
 def SignUp_View(request):
     if request.method=="POST":
         UserName=request.POST.get("username")
@@ -56,6 +58,9 @@ def SignUp_View(request):
         messages.success(request,'Suceessfully completed your registration..Please Login!')
         return redirect('/')
     return render(request,'SignUp.html')
+
+#Logout request 
+#We Have added The Logout.html
 @cache_control(no_cache=True, must_revalidate=True,no_store=True)
 
 def LogOut(request):

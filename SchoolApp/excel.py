@@ -17,7 +17,7 @@ from tablib import Dataset
 import os
 import mimetypes
 
-
+##Students Import Functionality
 def Student_upload(request):
     if request.method == 'POST':
         person_resource = Studentresource()
@@ -42,6 +42,7 @@ def Student_upload(request):
     return render(request, 'StudentsUpload.html')
 
 
+#Example Download file 
 def Student_Download_File(requst):
     # Create a new workbook and add a worksheet
     wb = Workbook()
