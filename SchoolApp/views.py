@@ -12,10 +12,11 @@ from django.db.models import Q
 from xhtml2pdf import pisa
 import datetime
 from SchoolApp.resources import Studentresource
-
+from django.views.decorators.cache import cache_control
 # Create your views here.
 
 #Home Page View of Home.html
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def home(request):
     return render(request, 'Home.html')
 
@@ -41,6 +42,7 @@ def contact(request):
 
 #Add student View 
 #Below One is Search Functionality and Pagination view
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def index(request):
     try:
         if 'q' in request.GET:
@@ -63,6 +65,7 @@ def index(request):
 
 #Add Student View
 #Get Data from The StudentDatamodalView.html
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def insertedData(request):
 
     if request.method == "POST":
@@ -104,6 +107,7 @@ def insertedData(request):
 ##EDit And Update The Student Data
 ##Based On Id we should Update
 ##Below on we are posting the changed data
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def update(request, id):
     if request.method == "POST":
         RollNumber = request.POST['roll']
@@ -130,6 +134,7 @@ def update(request, id):
     return render(request, 'Student_Edit.html', context)
 
 #Delete the data 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def delete(request,pk):
     d = Student.objects.get(id=pk)
     if request.method == 'POST':
@@ -141,6 +146,7 @@ def delete(request,pk):
 
 # Student Family Details
 #Student Family details Search Functionality
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def Family(request):
 
     family = StudentFamily.objects.all()
@@ -159,6 +165,7 @@ def Family(request):
     return render(request, 'StudentDetails.html', context)
 
 #Getting Data from the html page
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def familyinsertedData(request):
 
     #Getting data from forgienkey table
@@ -215,6 +222,7 @@ def familyinsertedData(request):
 
 #Updating Student Details 
 #updating the data 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def StudentDetailsUpdate(request, id):
     if request.method == "POST":
         name_id = request.POST.get('name')
@@ -241,6 +249,7 @@ def StudentDetailsUpdate(request, id):
     return render(request, 'StudentDetailsEdit.html', context)
 
 #Delete The Student Detail view Functionality
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def StudentDetailsDelete(request, id):
     d = StudentFamily.objects.get(id=id)
     d.delete()
@@ -248,10 +257,12 @@ def StudentDetailsDelete(request, id):
     return redirect("/StudentDetails")
 
 #Captcha Functionalty
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def captcha(request):
     return render(request, 'captcha.html')
 
 #Pdf Functionality
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def StudentDetailsResultList(request):
     template_name = "StudentDetailsPdf.html"
     family = StudentFamily.objects.all().order_by("id")
@@ -263,6 +274,7 @@ def StudentDetailsResultList(request):
         },
     )
 #PdfFunctionality of StudentDetail
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def StudentResultList(request):
     template_name = "StudentsPdf.html"
     family = Student.objects.all().order_by("id")
@@ -275,10 +287,12 @@ def StudentResultList(request):
     )
 
 #PDF Functionality of Through HTML display
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def StudentDtaPdf(request):
     slr = Student.objects.all()
     return render(request,'StudentDataPdf.html',{'seller':slr})
 #PDF Functionality 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def StudentDetailsDataPdf(request):
     SFD = StudentFamily.objects.all()
     return render(request,'StudentDetailsDataPdf.html',{'SFD':SFD})
@@ -287,8 +301,10 @@ def StudentDetailsDataPdf(request):
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def view_student(request, id):
   return HttpResponseRedirect(reverse('index'))
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def view_studentdetails(request, id):
   return HttpResponseRedirect(reverse('Family'))

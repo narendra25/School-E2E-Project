@@ -30,6 +30,7 @@ def Login_View(request):
 #SignUp View  vIew Functionality 
 #Sign Up Validations
 #Get Data from the Signup.html
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def SignUp_View(request):
     if request.method=="POST":
         UserName=request.POST.get("username")
